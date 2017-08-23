@@ -75,5 +75,16 @@ set listchars=tab:>-,space:.
 
 set hlsearch  " Search highlight
 
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhiteSpace /\s\+$/ " Show trailing white space
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+function! TrimWhiteSpace()
+    %s/\s\+$//e
+endfunction
+autocmd BufWritePre * :call TrimWhiteSpace()
 
 let g:airline_powerline_fonts = 1
