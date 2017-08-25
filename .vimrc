@@ -39,6 +39,8 @@ Plug 'jiangmiao/auto-pairs'
 " for auto detect indentation
 Plug 'tpope/vim-sleuth'
 
+Plug 'mkitt/tabline.vim'
+
 call plug#end()
 
 " All of your Plugins must be added before the following line
@@ -87,4 +89,6 @@ function! TrimWhiteSpace()
 endfunction
 autocmd BufWritePre * :call TrimWhiteSpace()
 
+
+let g:airline#extensions#tabline#tab_nr_type = 1  "for tab no.
 let g:airline_powerline_fonts = 1
